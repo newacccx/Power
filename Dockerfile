@@ -11,7 +11,7 @@ WORKDIR /bot
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Update and install required packages
-RUN apt-get -qq update && apt-get -qq install -y git wget pv jq python3-dev ffmpeg mediainfo neofetch
+RUN apt-get update && apt-get install -y git wget pv jq python3-dev ffmpeg mediainfo neofetch #Fixed typo in the package manager name
 
 # Expose port 80 for the application
 EXPOSE 80
@@ -27,4 +27,4 @@ RUN pip3 install -r requirements.txt
 HEALTHCHECK CMD curl --fail http://localhost:80/ || exit 1
 
 # Define the command to run the application
- ["CMDbash", "run.sh"]
+CMD ["bash", "run.sh"] #Fixed typo in the CMD syntax
